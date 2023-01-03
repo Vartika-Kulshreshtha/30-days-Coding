@@ -1,0 +1,31 @@
+class Solution {
+public:
+void helper(vector<int>& candidates, int target, vector<int>& output, vector<vector<int>>& ans, int i, int sumtillnow)
+{
+    if(sumtillnow==target)
+    {
+        ans.push_back(output);
+        return;
+    }
+    if(sumtillnow>target || i>=candidates.size()) return;
+
+    sumtillnow+=candidates[i];
+    output.push_back(candidates[i]);
+    helper(candidates, target, output, ans, i+1, sumtillnow);
+
+    while(i+1<candidates.size() && candidates[i]==candidates[i+1]) i++;
+
+    sumtillnow-=candidates[i];
+    output.pop_back();
+    helper(candidates, target, output, ans, i+1, sumtillnow);
+}
+    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+        sort(candidates.begin(), candidates.end());
+        vector<int>output;
+        vector<vector<int>>ans;
+        int sumtillnow=0;
+        int i=0;
+        helper(candidates, target, output, ans, i, sumtillnow);
+        return ans;
+    }
+};

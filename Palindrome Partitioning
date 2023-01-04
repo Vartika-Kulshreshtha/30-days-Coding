@@ -1,0 +1,36 @@
+class Solution {
+public:
+void helper(string s, int index, vector<string>&subset, vector<vector<string>>&ans)
+{
+    if(index==s.size())
+    {
+        ans.push_back(subset);
+        return;
+    }
+    for(int i=index; i<s.size(); i++)
+    {
+        if(ispalindrome(s,index,i))
+        {
+            subset.push_back(s.substr(index, i-index+1));
+            helper(s, i+1, subset, ans);
+            subset.pop_back();
+        }
+    }
+}
+bool ispalindrome(string s, int st, int e)
+    {
+
+        while(st<e)
+        {
+            if(s[st++]!=s[e--]) return 0;
+        }
+        return 1;
+    }
+    vector<vector<string>> partition(string s) {
+        vector<string>subset;
+        vector<vector<string>>ans;
+        int index=0;
+        helper(s, index, subset, ans);
+        return ans;
+    }
+};

@@ -1,0 +1,19 @@
+class Solution {
+public:
+int sum=0;
+void helper(TreeNode* root, bool isleft)
+{
+    if(isleft && !root->left && !root->right)
+    {
+        sum+=root->val;
+        return;
+    }
+    if(root->left) helper(root->left, true);
+    if(root->right) helper(root->right, false);
+}
+    int sumOfLeftLeaves(TreeNode* root) {
+        if(!root) return 0;
+        helper(root,false);
+        return sum;
+    }
+};

@@ -1,0 +1,19 @@
+bool helper(BinaryTreeNode<int>* root, int min, int max)
+{
+    if(root==NULL) return 1;
+
+    if(root->data >min && root->data <max)
+    {
+        bool left=helper(root->left, min, root->data);
+        bool right=helper(root->right, root->data, max);
+        return left && right;
+    }
+    else return 0;
+}
+bool validateBST(BinaryTreeNode<int>* root) 
+{
+    // Write your code here
+    int min=INT_MIN;
+    int max=INT_MAX;
+    return helper(root, min, max);
+}

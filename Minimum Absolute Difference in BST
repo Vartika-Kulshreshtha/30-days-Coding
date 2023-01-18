@@ -1,0 +1,23 @@
+class Solution {
+public:
+void inorder(TreeNode* root, vector<int>&ans)
+{
+    if(root==NULL) return;
+
+    inorder(root->left, ans);
+    ans.push_back(root->val);
+    inorder(root->right, ans);
+}
+    int getMinimumDifference(TreeNode* root) {
+        int mindiff=INT_MAX;
+        vector<int>ans;
+        inorder(root, ans);
+        int real=0;
+        for(int i=0; i<ans.size()-1; i++)
+        {
+            real=abs(ans[i+1]-ans[i]);
+            mindiff=min(mindiff, real);
+        }
+        return mindiff;
+    }
+};

@@ -1,0 +1,13 @@
+bool isMatrixSymmetric(vector<vector<int>> matrix){
+    // Write your code here.
+    vector<vector<int>> original=matrix;
+    for(int i=0; i<matrix.size(); i++)
+    {
+        for(int j=i; j<matrix[0].size(); j++)
+        {
+            swap(matrix[i][j], matrix[j][i]);
+        }
+    }
+    if(original==matrix) return 1;
+    return false;
+}

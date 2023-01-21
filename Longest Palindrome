@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int longestPalindrome(string s) {
+        int result=0;
+        bool odd_found=false;
+        unordered_map<char, int>mp;
+        for(auto a:s) mp[a]++;
+        for(auto a:mp)
+        {
+            if(a.second%2==0)
+            {
+                result+=a.second;
+            }
+            else
+            {
+                odd_found=true;
+                result+=a.second-1;
+            }
+        }
+        if(odd_found) result++;
+        return result;
+    }
+};

@@ -1,0 +1,13 @@
+#include <bits/stdc++.h> 
+bool findInMatrix(int x, vector<vector<int>> &arr)
+{
+    //    Write your code here.
+    for(int i=0; i<arr.size(); i++)
+    {
+        for(int j=0; j<arr[0].size(); j++)
+        {
+            if(arr[i][j]==x) return 1;
+        }
+    }
+    return 0;
+}

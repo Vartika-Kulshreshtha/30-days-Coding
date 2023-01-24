@@ -1,0 +1,20 @@
+void helper(BinaryTreeNode<int> *root, long long &ans)
+{
+	if(root==NULL) return;
+	if(root->left!=NULL)
+	{
+		ans += root->left->data;
+	} 
+     
+    helper(root->left, ans);
+    helper(root->right, ans);
+}
+
+long long leftSum(BinaryTreeNode<int> *root)
+{
+	// Write your code here.
+	long long ans=0;
+	helper(root, ans);
+	return ans;
+	
+}

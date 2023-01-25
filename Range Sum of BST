@@ -1,0 +1,19 @@
+class Solution {
+public:
+void helper(TreeNode* root, int &sum,int &low, int &high)
+{
+        if(root==NULL) return;
+
+        helper(root->left, sum, low, high);
+        if(root->val>=low && root->val<=high)
+            {
+                sum+=root->val;
+            }
+        helper(root->right, sum, low, high);
+}
+    int rangeSumBST(TreeNode* root, int low, int high) {
+        int sum=0;
+        helper(root, sum, low, high);
+        return sum;
+    }
+};

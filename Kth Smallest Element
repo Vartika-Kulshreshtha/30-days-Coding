@@ -1,0 +1,23 @@
+#include <bits/stdc++.h> 
+int kthSmallest(vector<int> input, int k)
+{
+    // Write your code here.
+    priority_queue<int>pq;
+    int r=input.size()-1;
+
+    for(int i=0; i<k; i++)
+    {
+        pq.push(input[i]);
+    }
+
+    for(int i=k; i<=r; i++)
+    {
+        if(input[i]<pq.top())
+        {
+            pq.pop();
+            pq.push(input[i]);
+        }
+    }
+    int ans=pq.top();
+    return ans;
+}

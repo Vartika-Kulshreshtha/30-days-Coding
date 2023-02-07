@@ -1,0 +1,29 @@
+void inorder(BinaryTreeNode* root, vector<int>&in)
+{
+	if(root==NULL) return;
+
+	inorder(root->left, in);
+	in.push_back(root->data);
+	inorder(root->right, in);
+}
+
+void preorder(BinaryTreeNode* root, vector<int>&in, int&index)
+{
+	if(root==NULL) return;
+
+	root->data=in[index++];
+	preorder(root->left, in, index);
+	preorder(root->right, in, index);
+}
+BinaryTreeNode* convertBST(BinaryTreeNode* root)
+{
+	// Write your code here.
+	if(root==NULL) return NULL;
+
+	int index=0;
+	vector<int>in;
+	
+	inorder(root, in);
+	preorder(root, in, index);
+	return root;
+}

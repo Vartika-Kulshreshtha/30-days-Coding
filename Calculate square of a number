@@ -1,0 +1,8 @@
+#include <bits/stdc++.h> 
+int calculateSquare(int num)
+{
+    //    Write your code here.
+    int ans=1;
+    ans=num*num;
+    return ans;
+}

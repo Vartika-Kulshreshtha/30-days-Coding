@@ -1,0 +1,19 @@
+long long connectRopes(int* arr, int n)
+{
+    // Your code goes here
+    priority_queue<long long, vector<long long>, greater<long long>>minh;
+        long long cost=0;
+        for(long long i=0;i<n;i++) minh.push(arr[i]);
+        while(minh.size()>=2)
+        {
+            int first=minh.top();
+            minh.pop();
+            
+            int second=minh.top();
+            minh.pop();
+            
+            cost=cost+first+second;
+            minh.push(first+second);
+        }
+        return cost;
+}

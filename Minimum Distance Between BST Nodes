@@ -1,0 +1,19 @@
+void inorder(TreeNode* root, vector<int>&in)
+{
+    if(root==NULL) return;
+
+    inorder(root->left, in);
+    in.push_back(root->val);
+    inorder(root->right, in);
+}
+    int minDiffInBST(TreeNode* root) {
+        int mini=INT_MAX;
+
+        if(root==NULL) return 0;
+
+        vector<int>in;
+        inorder(root, in);
+        for(int i=1;i<in.size();i++)    mini=min(mini,in[i]-in[i-1]);
+        
+        return mini;
+    }

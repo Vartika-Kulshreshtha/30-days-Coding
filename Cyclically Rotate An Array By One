@@ -1,0 +1,9 @@
+#include <bits/stdc++.h> 
+void rotate(vector<int>& arr, int n) {
+    // Write your code here
+    int i=0;
+    while (i < n) {
+      swap(arr[i], arr[n - 1]);
+      i++;
+    }
+}

@@ -1,0 +1,6 @@
+pair < int, int > swap(pair < int, int > swapValues) {
+    // Write your code here.
+    pair < int, int >ans;
+    ans={swapValues.second, swapValues.first};
+    return ans;
+}

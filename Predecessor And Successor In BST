@@ -1,0 +1,32 @@
+void inorder(BinaryTreeNode<int>* root, int key, vector<int>&in)
+{
+    if(root==NULL) return;
+
+    inorder(root->left, key, in);
+    in.push_back(root->data);
+    inorder(root->right, key, in);
+}
+pair<int,int> predecessorSuccessor(BinaryTreeNode<int>* root, int key)
+{
+    // Write your code here.
+    pair<int,int>ans;
+
+    int pred=-1;
+    int succ=-1;
+    
+    vector<int>in;
+    inorder(root, key, in);
+    
+    for(int i=0; i<in.size(); i++)
+    {
+        if(in[i]==key)
+        {
+            if(i==0) ans.first=-1;
+            else ans.first=in[i-1];
+
+            if(i==in.size()-1) ans.second=-1;
+            else ans.second=in[i+1];
+        }
+    }
+    return ans;
+}

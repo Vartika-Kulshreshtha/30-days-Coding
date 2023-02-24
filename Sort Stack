@@ -1,0 +1,27 @@
+#include <bits/stdc++.h> 
+void insertatbottom(stack<int> &s, int num)
+{
+	if(s.empty() || (s.top()<num))
+	{
+		s.push(num);
+		return;
+	}
+
+	int n=s.top();
+	s.pop();
+	insertatbottom(s, num);
+	s.push(n);
+}
+stack<int> sortStack(stack<int> &s)
+{
+	// Write code here.
+
+	if(s.size()==0) return s;
+
+	int num=s.top();
+	s.pop();
+
+	sortStack(s);
+	insertatbottom(s, num);
+	return s;
+}

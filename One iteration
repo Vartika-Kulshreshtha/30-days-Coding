@@ -1,0 +1,10 @@
+#include <bits/stdc++.h> 
+int oneIteration(vector<int> A)
+{
+    // Write your code here.
+    int sum=0;  
+    sort(A.begin(),A.end());
+    int n=A.size()-1;
+    sum=A[n]+ A[n-1];
+    return sum;
+}

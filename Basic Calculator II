@@ -1,0 +1,50 @@
+class Solution {
+public:
+    int calculate(string s) {
+        stack<int>st;
+        int len=s.size();
+        if(len==0) return 0;
+        int currentnumber=0;
+        char operation = '+';
+        for(int i=0; i<len; i++)
+        {
+            char currentchar=s[i];
+            if(isdigit(currentchar))
+            {
+                currentnumber=(currentnumber*10)+(currentchar-'0');
+            }
+            if((!iswspace(currentchar) && !isdigit(currentchar)) || i==len-1)
+            {
+                if(operation=='-')
+                {
+                    st.push(-currentnumber);
+                }
+                else if(operation=='+')
+                {
+                    st.push(currentnumber);
+                }
+                else if(operation=='*')
+                {
+                    int stacktop=st.top();
+                    st.pop();
+                    st.push(stacktop*currentnumber);
+                }
+                else if(operation=='/')
+                {
+                    int stacktop=st.top();
+                    st.pop();
+                    st.push(stacktop/currentnumber);
+                }
+                operation=currentchar;
+                currentnumber=0;
+            }
+        }
+        int res=0;
+        while(!st.empty())
+        {
+            res+=st.top();
+            st.pop();
+        }
+        return res;
+    }
+};

@@ -1,0 +1,10 @@
+bool isNodePresent(BinaryTreeNode<int> *root, int x) {
+    // Write your code here
+    if(root==NULL) return 0;
+    if(root->data==x) return 1;
+
+    bool l=isNodePresent(root->left, x);
+    bool r=isNodePresent(root->right, x);
+    if(root->data==x) return 1;
+    return l||r;
+}
